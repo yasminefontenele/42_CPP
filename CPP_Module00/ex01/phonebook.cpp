@@ -3,30 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
+/*   By: yfontene <yfontene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:19:29 by yfontene          #+#    #+#             */
-/*   Updated: 2024/11/08 11:19:33 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:20:48 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 
-Phonebook::Phonebook() : index(0) {}
+Phonebook::Phonebook() : index(0), totalContacts(0) {}
 
 void Phonebook::addContact(const std::string &firstName, const std::string &lastName,
                             const std::string &nickname, const std::string &PhoneNumber,
                             const std::string &darkestSecret)
 {
-    if (index < 8)
-    {
-        contacts[index].setContactInfo(firstName, lastName, nickname, PhoneNumber, darkestSecret);
-        index++;
-    }
-    else
-    {
-        std::cout << "Phonebook is full" << std::endl;
-    }
+    contacts[index].setContactInfo(firstName, lastName, nickname, PhoneNumber, darkestSecret);
+    index = (index + 1)%8;
+    if (totalContacts < 8)
+        totalContacts++;
+    std::cout << "Contact added successfully!" << std::endl;
 }
 
 void Phonebook::searchContact() const
@@ -36,13 +32,11 @@ void Phonebook::searchContact() const
                 << std::setw(10) << "Last Name" << "|"
                 << std::setw(10) << "Nickname" << std::endl;
 
-    for (int i = 0; i < index; i++)
+    for (int i = 0; i < totalContacts; i++)
     {
         std::string firstName = contacts[i].getField("firstName");
         std::string lastName = contacts[i].getField("lastName");
         std::string nickname = contacts[i].getField("nickname");
-
-        if (firstName.empty()) break;
 
         if (firstName.length() > 10)
             firstName = firstName.substr(0, 9) + ".";

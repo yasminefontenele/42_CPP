@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+         #
+#    By: yfontene <yfontene@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 13:15:17 by yfontene          #+#    #+#              #
-#    Updated: 2024/11/08 10:13:00 by yfontene         ###   ########.fr        #
+#    Updated: 2024/11/12 19:01:06 by yfontene         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,15 +25,15 @@ RM = rm -f
 
 SRCS=					megaphone.cpp
 						
-OBJS=					$(SRCS:.c=.o)
+OBJS=					$(SRCS:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@echo "$(GREEN)succesfully compiled! ✅$(END)"
 
-%.o: %.c
+%.o: %.cpp
 	$(CC) $(CFLAGS) -c $(INCLUDES) $< -o $@
 
 clean:

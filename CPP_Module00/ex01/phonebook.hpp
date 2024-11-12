@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
+/*   By: yfontene <yfontene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 10:32:13 by yfontene          #+#    #+#             */
-/*   Updated: 2024/11/08 10:54:34 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:18:18 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class Phonebook
     private:
         Contact contacts[8];
         int index;
+        int totalContacts;
     public:
         Phonebook();
         void addContact(const std::string &firstName, const std::string &lastName,

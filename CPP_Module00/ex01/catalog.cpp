@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   catalog.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
+/*   By: yfontene <yfontene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:12:44 by yfontene          #+#    #+#             */
-/*   Updated: 2024/11/08 11:19:07 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:07:30 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int main() {
     Phonebook phonebook;
     std::string command;
 
-    std::cout << "Welcome to My Awesome PhoneBook!" << std::endl;
+    std::cout << "Welcome to My Awesome PhoneBook! :D" << std::endl;
     
     while (1)
     {
@@ -41,7 +41,7 @@ int main() {
             if (firstName.empty() || lastName.empty() || nickname.empty() || 
                 phoneNumber.empty() || darkestSecret.empty())
             {
-                std::cout << "All fields must be filled." << std::endl;
+                std::cout << "Sorry, to save the contact you MUST fill all the fields." << std::endl;
             }
             else
                 phonebook.addContact(firstName, lastName, nickname, phoneNumber, darkestSecret);
