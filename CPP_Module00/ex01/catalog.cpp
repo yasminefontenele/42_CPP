@@ -3,16 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   catalog.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfontene <yfontene@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:12:44 by yfontene          #+#    #+#             */
-/*   Updated: 2024/11/12 19:07:30 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:23:16 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 
-int main() {
+bool isValidPhoneNumber(const std::string &phoneNumber)
+{
+    size_t startIndex = 0;
+
+    if (!phoneNumber.empty() && phoneNumber[0] == '+')
+        startIndex = 1;
+    for (size_t i = startIndex; i < phoneNumber.length(); i++)
+    {
+        if (!isdigit(phoneNumber[i]))
+            return false;
+    }
+    return true;
+}
+
+int main()
+{
     Phonebook phonebook;
     std::string command;
 
@@ -35,6 +50,11 @@ int main() {
             std::getline(std::cin, nickname);
             std::cout << "Enter phone number: ";
             std::getline(std::cin, phoneNumber);
+            while (!isValidPhoneNumber(phoneNumber))
+            {
+                std::cout << "Invalid phone number! Please enter a valid one(only numbers are accepted): ";
+                std::getline(std::cin, phoneNumber);
+            }
             std::cout << "Enter darkest secret: ";
             std::getline(std::cin, darkestSecret);
 
