@@ -6,28 +6,29 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 17:38:36 by yfontene          #+#    #+#             */
-/*   Updated: 2024/11/20 15:36:15 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/11/20 18:12:14 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-
-Zombie* zombieHorde(int N, std::string name);
+#include "Fixed.hpp"
 
 int main()
 {
-    int N = 5;
-    std::string name = "Zombie";
-
-    Zombie *horde = zombieHorde(N, name);
-    if (!horde)
-    {
-        std::cout << "Error: failed to create the horde!" << std::endl;
-        return (1);
-    }
-    for (int i = 0; i < N; i++)
-        horde[i].announce();
-    delete [] horde;
-
+    Fixed a;
+    Fixed const b( 10 );
+    Fixed const c( 42.42f );
+    Fixed const d( b );
+    
+    a = Fixed( 1234.4321f );
+    
+    std::cout << "a is " << a << std::endl;
+    std::cout << "b is " << b << std::endl;
+    std::cout << "c is " << c << std::endl;
+    std::cout << "d is " << d << std::endl;
+    
+    std::cout << "a is " << a.toInt() << " as integer" << std::endl;
+    std::cout << "b is " << b.toInt() << " as integer" << std::endl;
+    std::cout << "c is " << c.toInt() << " as integer" << std::endl;
+    std::cout << "d is " << d.toInt() << " as integer" << std::endl;
     return (0);
 }

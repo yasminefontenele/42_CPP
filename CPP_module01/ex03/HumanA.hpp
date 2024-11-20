@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 19:32:02 by yfontene          #+#    #+#             */
-/*   Updated: 2024/11/18 20:04:32 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/11/20 15:41:00 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 class HumanA
 {
     private:
-        std::string name;//name of the human
+        std::string name;
         Weapon &weapon;//reference to the weapon(always present)
     public:
         HumanA(const std::string &name, Weapon &weapon);//constructor

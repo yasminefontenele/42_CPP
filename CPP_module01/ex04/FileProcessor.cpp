@@ -6,14 +6,22 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:35:32 by yfontene          #+#    #+#             */
-/*   Updated: 2024/11/20 10:03:09 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/11/20 17:08:04 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FileProcessor.hpp"
 
+/****** ifstream ******/
+//we can read data from a file line by line or character by character.
+//This is useful for parsing data from text files, loading settings from a program,
+//or processing data from any type of file.
+/****** ofstream ******/
+//allows us to write data to a file, creating or updating files. You can use this
+//class to save calculation results, generate reports, create log files, or any
+//other task that involves writing data to a file.
+
 //read the content of the file and return it as a string
-//constroctor
 FileProcessor::FileProcessor(const std::string &filename, const std::string &s1,
 const std::string &s2) : filename(filename), s1(s1), s2(s2){}
 
@@ -30,10 +38,14 @@ std::string FileProcessor::readFile() const
     std::ifstream infile(filename.c_str());//open the file. The c_str() converts the string to a const string
     if (!infile.is_open())//check if the file is open
         throw std::ios_base::failure("Unable to open the file");//throw an exception if the file is not open
-    
+
     std::stringstream buffer;//create a string stream buffer
     buffer << infile.rdbuf();//read the file and store it in the buffer
     infile.close();//close the file
+
+    std::string content = buffer.str();
+    if (content.empty())
+        throw std::runtime_error("The file is empty, nothing to replace!");
     return (buffer.str());//return the content of the file as a string
 }
 
