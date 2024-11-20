@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:35:27 by yfontene          #+#    #+#             */
-/*   Updated: 2024/11/19 14:45:40 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/11/20 09:45:51 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class FileProcessor
         //methods
         std::string readFile() const;
         void writeFile(const std::string &content) const;
-        void replaceString(const std::string &content) const;
+        std::string replaceString(const std::string &content) const;
 
     public:
         FileProcessor(const std::string &filename, const std::string &s1, const std::string &s2);
