@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:30:59 by yfontene          #+#    #+#             */
-/*   Updated: 2024/11/25 19:10:19 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:42:24 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,21 @@ Area = 1/2|x1(y2-y3) + x2(y3-y1) + x3(y1-y2)|
 Fixed calculateArea(Point const &a, Point const &b, Point const &c)
 {
     Fixed area = (a.getX() * (b.getY() - c.getY()) +
-                  b.getX() * (c.getX() - a.getX()) +
-                  c.getX() * (a.getY() - b.getX())) / 2;
+                  b.getX() * (c.getY() - a.getY()) +
+                  c.getX() * (a.getY() - b.getY())) / 2;
 
-    if(area < 0)
-        return (area * -1);
-    else
-        return (area);
+    return (area < 0 ? area * -1 : area);
 }
 
-bool bsp(Point const a, Point const b, Point const c, Point const p)
+bool bsp(Point const &a, Point const &b, Point const &c, Point const &p)
 {
     Fixed totalArea = calculateArea(a, b, c);
     Fixed area1 = calculateArea(p, b, c);
     Fixed area2 = calculateArea(a, p, c);
     Fixed area3 = calculateArea(a, b, p);
 
-    if(totalArea = area1 + area2 + area3)
+    if(totalArea == area1 + area2 + area3)
         return(true);
     else
         return(false);
-    //return(totalArea = area1 + area2 + area3);    
 }

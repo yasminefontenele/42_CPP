@@ -6,13 +6,14 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 17:38:36 by yfontene          #+#    #+#             */
-/*   Updated: 2024/11/25 19:09:24 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:34:38 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
 
-/*COMO FAZER A CONEXAO DE BSP COM O MAIN*/
+Fixed calculateArea(Point const &a, Point const &b, Point const &c);
+bool bsp(Point const &a, Point const &b, Point const &c, Point const &p);
 
 int main()
 {
