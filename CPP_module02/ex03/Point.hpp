@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:31:09 by yfontene          #+#    #+#             */
-/*   Updated: 2024/11/26 11:18:32 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/11/26 13:51:08 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ class Point
         const Fixed y;
 
     public:
-        Point();//constroctor
-        Point(const Fixed x, const Fixed y);//construtor de valores
-        Point(const Point &other);//contrutor de copia
+        Point();
+        Point(const float x, const float y);
+        Point(const Point &other);
+        Point &operator=(const Point &other);
         ~Point();
         
         Fixed getX() const;

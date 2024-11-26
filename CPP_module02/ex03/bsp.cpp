@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:30:59 by yfontene          #+#    #+#             */
-/*   Updated: 2024/11/26 11:42:24 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/11/26 13:59:02 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,15 @@ Fixed calculateArea(Point const &a, Point const &b, Point const &c)
     return (area < 0 ? area * -1 : area);
 }
 
-bool bsp(Point const &a, Point const &b, Point const &c, Point const &p)
+bool bsp(Point const a, Point const b, Point const c, Point const point)
 {
     Fixed totalArea = calculateArea(a, b, c);
-    Fixed area1 = calculateArea(p, b, c);
-    Fixed area2 = calculateArea(a, p, c);
-    Fixed area3 = calculateArea(a, b, p);
+    Fixed area1 = calculateArea(point, b, c);
+    Fixed area2 = calculateArea(a, point, c);
+    Fixed area3 = calculateArea(a, b, point);
 
+    if(area1 == 0 || area2 == 0 || area3 == 0)
+        return(false);
     if(totalArea == area1 + area2 + area3)
         return(true);
     else
