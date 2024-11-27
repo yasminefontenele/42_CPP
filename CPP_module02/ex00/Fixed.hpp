@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 11:00:33 by yfontene          #+#    #+#             */
-/*   Updated: 2024/11/20 11:05:16 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:34:40 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Fixed
         //assignment operator
         Fixed &operator=(const Fixed &fixed);
         //method to return the raw value of the fixed point value
-        int getRawBits(void) const;
+        int getRawBits(void) const;//function does not modify the object's state, so is const
         void setRawBits(int const raw);
 };
 
