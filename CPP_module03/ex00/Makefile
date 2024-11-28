@@ -6,7 +6,7 @@
 #    By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 13:15:17 by yfontene          #+#    #+#              #
-#    Updated: 2024/11/20 11:12:56 by yfontene         ###   ########.fr        #
+#    Updated: 2024/11/28 18:28:14 by yfontene         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,13 +18,13 @@ CYAN				=	\033[0;36m
 END					=	\033[0m
 
 
-NAME = Fixed
+NAME = ClapTrap
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -f
 
 SRCS=					main.cpp\
-						Fixed.cpp\
+						ClapTrap.cpp\
 						
 OBJS=					$(SRCS:.cpp=.o)
 
