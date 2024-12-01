@@ -1,2 +1,2 @@
-This module aims to learn about memory allocation, pointers to members,
-references and switch statement.
+This module aims to learn about namespaces, classes, member functions, stdio streams,
+initialization lists, static, consts and some other basic stufs.
