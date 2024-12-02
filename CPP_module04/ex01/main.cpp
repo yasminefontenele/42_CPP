@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:16:28 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/02 13:54:14 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/12/02 14:36:33 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,31 +25,39 @@ int main()
 
     std::cout << std::endl;
     std::cout << "My tests:" << std::endl;
-    std::cout << "Testing the creation and delete of animals:" << std::endl;
-    const Animal *animals[4];
-    //creating half Dog and half Cat
-    for (int y = 0; y < 2; ++y)
-        animals[y] = new Dog();
-    for (int y = 2; y < 4; ++y)
-        animals[y] = new Cat();
-
-    for (int i = 0; i < 4; ++i)
-        delete animals[i];
+    int nbr = 4;
+    const Animal *animals[nbr];
+    std::cout << "Creating the animals:" << std::endl;
+    for(int y = 0; y < nbr; y++)
+    {
+        if(y % 2 == 0)
+            animals[y] = new Dog();
+        else
+            animals[y] = new Cat();
+    }
+    std::cout << "Deleting the animals:" << std::endl;
+    for (int y = 0; y < nbr; y++)
+        delete animals[y];
 
     std::cout << std::endl;
 
     // tests the deep copy
     std::cout << "Testing the deep copy:" << std::endl;
     Dog dog1;
-    dog1.getBrain()->setIdeas(0, "Chase the ball!");
+    dog1.getBrain()->setIdeas(1, "Chase the ball!");
     Dog dog2 = dog1;
 
     std::cout << "Dog1 Idea[0]: " << dog1.getBrain()->getIdeas(0) << std::endl;
     std::cout << "Dog2 Idea[0]: " << dog2.getBrain()->getIdeas(0) << std::endl;
+    
     std::cout << "Testing the change of idea:" << std::endl;
-    dog2.getBrain()->setIdeas(0, "Guard the house!");
-    std::cout << "Dog1 Idea[0]: " << dog1.getBrain()->getIdeas(0) << std::endl;
-    std::cout << "Dog2 Idea[0]: " << dog2.getBrain()->getIdeas(0) << std::endl;
-
+    dog2.getBrain()->setIdeas(2, "Guard the house!");
+    dog2.getBrain()->setIdeas(3, "pretend to be dead");
+    
+    std::cout << "Dog1 Idea[0]: " << dog1.getBrain()->getIdeas(1) << std::endl;
+    std::cout << "Dog2 Idea[0]: " << dog2.getBrain()->getIdeas(1) << std::endl;
+    std::cout << "Dog2 Idea[1]: " << dog2.getBrain()->getIdeas(2) << std::endl;
+    std::cout << "Dog2 Idea[2]: " << dog2.getBrain()->getIdeas(3) << std::endl;
+    
     return 0;
 }
