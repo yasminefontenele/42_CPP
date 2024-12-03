@@ -1,3 +1,5 @@
+## Mapa de componentes
+
 | Class/Interface | Attributes | Methods |
 |---|---|---|
 | **AMateria** (Abstract) | `+ type: std::string` | `+ getType() const` <br> `+ clone() = 0 (abstract)` <br> `+ use(ICharacter&)` |
