@@ -28,3 +28,6 @@ An abstract class is a class that:
     It cannot be instantiated directly.
     Serves as a basis for other classes.
     It has at least one purely virtual function (declared with = 0), which must be implemented by derived classes.
+
+
+- Playlist about (oop theories)[https://www.youtube.com/watch?v=KlIL63MeyMY&list=PL6qsRzBhn4BlSiDHoGWLj6Op4Ika8zjIC] (in PT)
