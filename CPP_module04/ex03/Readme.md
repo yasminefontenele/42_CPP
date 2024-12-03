@@ -1,4 +1,4 @@
-## Mapa de componentes
+## Component map
 
 | Class/Interface | Attributes | Methods |
 |---|---|---|
@@ -10,23 +10,23 @@
 | **IMateriaSource** (Interface) |  | `+ learnMateria(AMateria*)` <br> `+ createMateria(string)` |
 | **MateriaSource** | `- templates[4]` | `+ learnMateria` <br> `+ createMateria` |
 
+## Action Table
 
-## Tabela de ações
-| Componente | Função | Descrição |
+| Component | Function | Description |
 |---|---|---|
-| AMateria | clone | Cria uma cópia da magia. Método abstrato, implementado por classes derivadas. |
-| AMateria | use | Executa uma ação associada à magia. Exemplo: "Ice lança um raio de gelo". |
-| Ice | clone | Retorna uma nova instância de Ice. |
-| Ice | use | Mostra "* shoots an ice bolt at <name> *". |
-| Cure | clone | Retorna uma nova instância de cure. |
-| Cure | use | Mostra "* heals <name>'s wounds *". |
-| ICharacter | equip | Adiciona uma magia ao inventário (máximo de 4). |
-| ICharacter | unequip | Remove uma magia do inventário sem deletá-la. |
-| ICharacter | use | Usa a magia no índice especificado. |
-| Character | equip | Procura o primeiro slot vazio e equipa a magia. |
-| Character | unequip | Remove a magia e armazena o ponteiro para uso posterior. |
-| Character | use | Passa o controle para AMateria:: use |
-| IMateriaSource | learnMateria | Salva uma magia como modelo para clonagem futura. |
-| IMateriaSource | createMateria | Cria uma nova instância baseada no tipo solicitado. |
-| MateriaSource | learnMateria | Clona e armazena magias. |
-| MateriaSource | createMateria | Retorna uma cópia da magia do tipo especificado, se disponível. |
+| AMateria | clone | Creates a copy of the spell. Abstract method, implemented by derived classes. |
+| AMateria | use | Executes an action associated with the spell. Example: "Ice casts an ice bolt". |
+| Ice | clone | Returns a new instance of Ice. |
+| Ice | use | Displays "* shoots an ice bolt at <name> *". |
+| Cure | clone | Returns a new instance of Cure. |
+| Cure | use | Displays "* heals <name>'s wounds *". |
+| ICharacter | equip | Adds a spell to the inventory (maximum of 4). |
+| ICharacter | unequip | Removes a spell from the inventory without deleting it. |
+| ICharacter | use | Uses the spell at the specified index. |
+| Character | equip | Finds the first empty slot and equips the spell. |
+| Character | unequip | Removes the spell and stores the pointer for later use. |
+| Character | use | Passes control to AMateria::use |
+| IMateriaSource | learnMateria | Saves a spell as a template for future cloning. |
+| IMateriaSource | createMateria | Creates a new instance based on the requested type. |
+| MateriaSource | learnMateria | Clones and stores spells. |
+| MateriaSource | createMateria | Returns a copy of the spell of the specified type, if available. |
