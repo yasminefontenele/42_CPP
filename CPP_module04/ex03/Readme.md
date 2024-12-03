@@ -1,37 +1,12 @@
-AMateria (Classe Abstrata)         ICharacter (Interface)
-+--------------------------+       +---------------------------+
-| + type: std::string      |       | + getName() const         |
-| + getType() const        |       | + equip(AMateria* m)      |
-| + clone() = 0 (abstract) |       | + unequip(int idx)        |
-| + use(ICharacter&)       |       | + use(int idx, ICharacter&)|
-+--------------------------+       +---------------------------+
-          ↑                                    ↑
-+------------------+                 +------------------+
-| Ice (Concreto)   |                 | Character        |
-| + clone()        |                 | - name           |
-| + use(target)    |                 | - inventory[4]   |
-| "ice"            |                 | + equip          |
-+------------------+                 | + unequip        |
-          ↑                          | + use            |
-+------------------+                 +------------------+
-| Cure (Concreto)  |
-| + clone()        |
-| + use(target)    |
-| "cure"           |
-+------------------+
-
-IMateriaSource (Interface)
-+--------------------------+
-| + learnMateria(AMateria*)|
-| + createMateria(string)  |
-+--------------------------+
-          ↑
-+--------------------------+
-| MateriaSource            |
-| - templates[4]           |
-| + learnMateria           |
-| + createMateria          |
-+--------------------------+
+| Class/Interface | Attributes | Methods |
+|---|---|---|
+| **AMateria** (Abstract) | `+ type: std::string` | `+ getType() const` <br> `+ clone() = 0 (abstract)` <br> `+ use(ICharacter&)` |
+| **Ice** (Concrete) |  | `+ clone()` <br> `+ use(target)` <br> `"ice"` |
+| **Cure** (Concrete) |  | `+ clone()` <br> `+ use(target)` <br> `"cure"` |
+| **ICharacter** (Interface) |  | `+ getName() const` <br> `+ equip(AMateria* m)` <br> `+ unequip(int idx)` <br> `+ use(int idx, ICharacter&)` |
+| **Character** | `- name` <br> `- inventory[4]` | `+ equip` <br> `+ unequip` <br> `+ use` |
+| **IMateriaSource** (Interface) |  | `+ learnMateria(AMateria*)` <br> `+ createMateria(string)` |
+| **MateriaSource** | `- templates[4]` | `+ learnMateria` <br> `+ createMateria` |
 
 
 ## Tabela de ações
