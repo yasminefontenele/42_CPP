@@ -6,7 +6,7 @@
 #    By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 13:15:17 by yfontene          #+#    #+#              #
-#    Updated: 2024/12/02 12:31:47 by yfontene         ###   ########.fr        #
+#    Updated: 2024/12/04 11:27:00 by yfontene         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,17 +18,17 @@ CYAN				=	\033[0;36m
 END					=	\033[0m
 
 
-NAME = Animal
+NAME = Sorcery
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -f
 
 SRCS=					main.cpp\
-						Animal.cpp\
-						Dog.cpp\
-						Cat.cpp\
-						WrongAnimal.cpp\
-						WrongCat.cpp\
+						src/AMateria.cpp\
+						src/Character.cpp\
+						src/Cure.cpp\
+						src/Ice.cpp\
+						src/MateriaSource.cpp\
 						
 OBJS=					$(SRCS:.cpp=.o)
 
