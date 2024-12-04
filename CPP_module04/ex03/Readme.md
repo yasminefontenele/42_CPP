@@ -1,3 +1,44 @@
+## Understanding the exercise better
+
+## Sistema de Magias
+
+### 1. Magias (Materias)
+* **Tipos de Magias:**
+  * Ice (gelo)
+  * Cure (cura)
+  * ... (outros tipos podem ser adicionados)
+* **Hierarquia:**
+  * Classe base: AMateria
+  * Classes derivadas: Ice, Cure
+
+### 2. Fonte de Magias (MateriaSource)
+* **Funcionalidade:**
+  * Aprender novas magias
+  * Criar cópias de magias
+* **Papel:** Fábrica de magias
+
+### 3. Personagens (Characters)
+* **Inventário:**
+  * Capacidade para até 4 magias
+* **Ações:**
+  * Equipar magias
+  * Desequipar magias
+  * Usar magias em outros personagens
+
+### 4. Objetivo do Sistema
+* **Criação:**
+  * Instanciar objetos das classes de magia
+* **Equipamento:**
+  * Associar magias a personagens
+* **Uso:**
+  * Utilizar magias em combate ou outras interações
+* **Demonstração de Conceitos:**
+  * Herança: Relação entre AMateria e suas subclasses
+  * Polimorfismo: Tratamento de diferentes tipos de magias como um tipo base
+  * Interfaces: (Se houver interfaces definidas, descrevê-las aqui)
+  * Manipulação de Memória: Garantir a alocação e liberação corretas de memória
+
+
 ## Component map
 
 | Class/Interface | Attributes | Methods |
