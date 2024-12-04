@@ -1,42 +1,41 @@
 ## Understanding the exercise better
 
-## Sistema de Magias
+## Magic System
+### 1. Spells (Materia)
+* **Spell Types:**
+  * Ice
+  * Cure
+  * ... (other types can be added)
+* **Hierarchy:**
+  * Base class: AMateria
+  * Derived classes: Ice, Cure
 
-### 1. Magias (Materias)
-* **Tipos de Magias:**
-  * Ice (gelo)
-  * Cure (cura)
-  * ... (outros tipos podem ser adicionados)
-* **Hierarquia:**
-  * Classe base: AMateria
-  * Classes derivadas: Ice, Cure
+### 2. Spell Source (MateriaSource)
+* **Functionality:**
+  * Learn new spells
+  * Create copies of spells
+* **Role:** Spell factory
 
-### 2. Fonte de Magias (MateriaSource)
-* **Funcionalidade:**
-  * Aprender novas magias
-  * Criar cópias de magias
-* **Papel:** Fábrica de magias
+### 3. Characters
+* **Inventory:**
+  * Capacity for up to 4 spells
+* **Actions:**
+  * Equip spells
+  * Unequip spells
+  * Cast spells on other characters
 
-### 3. Personagens (Characters)
-* **Inventário:**
-  * Capacidade para até 4 magias
-* **Ações:**
-  * Equipar magias
-  * Desequipar magias
-  * Usar magias em outros personagens
-
-### 4. Objetivo do Sistema
-* **Criação:**
-  * Instanciar objetos das classes de magia
-* **Equipamento:**
-  * Associar magias a personagens
-* **Uso:**
-  * Utilizar magias em combate ou outras interações
-* **Demonstração de Conceitos:**
-  * Herança: Relação entre AMateria e suas subclasses
-  * Polimorfismo: Tratamento de diferentes tipos de magias como um tipo base
-  * Interfaces: (Se houver interfaces definidas, descrevê-las aqui)
-  * Manipulação de Memória: Garantir a alocação e liberação corretas de memória
+### 4. System Objectives
+* **Creation:**
+  * Instantiate spell class objects
+* **Equipment:**
+  * Associate spells with characters
+* **Usage:**
+  * Use spells in combat or other interactions
+* **Demonstration of Concepts:**
+  * Inheritance: Relationship between AMateria and its subclasses
+  * Polymorphism: Treating different spell types as a base type
+  * Interfaces: (If interfaces are defined, describe them here)
+  * Memory Management: Ensure correct allocation and deallocation of memory
 
 
 ## Component map
