@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:16:25 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/02 12:45:42 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/12/05 18:34:55 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define ANIMAL_HPP 
 
 #include <iostream>
+#include <string>
 
 class Animal
 {

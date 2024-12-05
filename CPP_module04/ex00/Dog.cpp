@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:32:48 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/02 12:52:52 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/12/05 18:15:31 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Dog::Dog()
 {
     this->type = "Dog";
-    std::cout << "Constuctor default called in Dog" << std::endl;
+    std::cout << "Constructor default called in Dog" << std::endl;
 }
 
 Dog::Dog(const Dog &other) : Animal(other)

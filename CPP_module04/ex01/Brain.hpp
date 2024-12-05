@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:03:34 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/02 13:30:47 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/12/05 18:20:32 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define BRAIN_HPP
 
 #include <iostream>
+#include <string>
 
 class Brain
 {
