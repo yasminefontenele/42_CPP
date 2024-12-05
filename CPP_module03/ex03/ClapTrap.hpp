@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 14:08:09 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/01 17:47:09 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/12/05 12:00:39 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ class ClapTrap
 {
     protected:
         std::string name;
-        int hitPoints;//ClapTrap health
-        int energyPoints;//energy available for actions
+        unsigned int hitPoints;//ClapTrap health
+        unsigned int energyPoints;//energy available for actions
         int attackDamage;
         
     public:

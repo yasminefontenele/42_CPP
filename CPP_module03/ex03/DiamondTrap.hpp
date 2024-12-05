@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 18:38:07 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/01 19:39:16 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/12/05 12:19:19 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,13 @@ class DiamondTrap : public FragTrap, public ScavTrap
 };
 
 #endif 
+
+/*
+"Indirect non-virtual base class is not allowed"
+DiamondTrap inherited from ScavTrap and FragTrap. Both ScavTrap and FragTrap inherited from ClapTrap.
+This causes ClapTrap to be inherited twice in DiamondTrap, creating ambiguity.
+This problem is known as diamond inheritance.
+*/
 
 /*
              ClapTrap

@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 14:08:12 by yfontene          #+#    #+#             */
-/*   Updated: 2024/11/28 18:42:21 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/12/05 11:59:18 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ ClapTrap::~ClapTrap()
 
 void ClapTrap::attack(const std::string &target)
 {
+    std::cout << name << " has " << energyPoints << " of energy points" << std::endl; 
     if(energyPoints <= 0)
     {
         std::cout << name << " has no energy left" << std::endl;
@@ -57,17 +58,23 @@ void ClapTrap::attack(const std::string &target)
         std::cout << name << " has no hit points left" << std::endl;
         return;
     }
-    energyPoints--;
-    attackDamage++;
-    std::cout << name << " attacks " << target << std::endl;
+    else
+    {
+        energyPoints--;
+        std::cout << name << " attacks " << target << std::endl;
+    }
+    std::cout << name << " has " << energyPoints << " of energy points" << std::endl; 
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
     hitPoints -= amount;
-    if(hitPoints < 0)
-        hitPoints = 0;
-    std::cout << name << " takes " << amount << " points of damage!" << std::endl;
+    if(hitPoints < 1)
+    {
+        std::cout << name << " died! No hit points left :("<<std::endl;
+        return;
+    }
+    std::cout << name << " takes " << amount << " points of damage![Current hitPoints "<< hitPoints << "]" << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)

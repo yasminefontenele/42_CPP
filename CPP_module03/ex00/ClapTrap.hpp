@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 14:08:09 by yfontene          #+#    #+#             */
-/*   Updated: 2024/11/28 18:25:05 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/12/05 11:29:08 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ class ClapTrap
 {
     private:
         std::string name;
-        int hitPoints;//ClapTrap health
-        int energyPoints;//energy available for actions
+        unsigned int hitPoints;//ClapTrap health
+        unsigned int energyPoints;//energy available for actions
         int attackDamage;
         
     public:
@@ -39,7 +39,7 @@ class ClapTrap
         
         void attack(const std::string& target);//Reduces 1 energy point and hit points to the target.
         void takeDamage(unsigned int amount);//Reduces hit points depending on the damage received.
-        void beRepaired(unsigned int amount);//Consumes 1 energy point.Restores hit points to the given value.
+        void beRepaired(unsigned int amount);//Consumes 1 energy point. Restores hit points to the given value.
 };
 
 #endif
