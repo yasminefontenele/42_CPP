@@ -9,3 +9,4 @@ After my C programming experience, I have come to appreciate the power and flexi
 **CPP01** - memory allocation, pointers to members, references and switch statement;<br>
 **CPP02** - ad-hoc polymorphism, operator overloading and Orthodox Canonical class form;<br>
 **CPP03** - inheritance;<br>
+**CPP04** - subtype polymorphism, abstract classes, interfaces;<br>
