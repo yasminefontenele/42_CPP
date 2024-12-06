@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:16:28 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/06 13:36:46 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/12/06 14:07:23 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,19 +82,16 @@ static void testSubject(void)
 
 static void	testingICharacter(void)
 {
-    printSection("CHARACTER");
-    ICharacter *Dumbledore = new Character("Marvin");
-    ICharacter *Gandalf = new Character("Yasmine");
-    AMateria *ice = new Ice();
-    AMateria *cure = new Cure();
+	printSection("CHARACTER");
+	ICharacter	*Dumbledore = new Character("Marvin");
+	ICharacter	*Gandalf = new Character("Yasmine");
+	AMateria	*ice = new Ice();
 
     std::cout << std::endl;
     std::cout << "Before equipping..." << std::endl;
-   
-    Dumbledore->printInventory();
-    Gandalf->printInventory();
 
     Dumbledore->equip(new Ice());
+    Dumbledore->equip(ice);
     Dumbledore->equip(new Cure);
     Gandalf->equip(new Ice());
     Gandalf->equip(new Cure);
@@ -104,28 +101,29 @@ static void	testingICharacter(void)
 
     std::cout << std::endl;
     std::cout << "After equipping..." << std::endl;
-    
-    Dumbledore->printInventory();
-    Gandalf->printInventory();
 
+	Dumbledore->printInventory();
+	Gandalf->printInventory();
+
+    std::cout << std::endl;
     printPersonage(Dumbledore->getName());
-    Dumbledore->use(0, *Gandalf);
+	Dumbledore->use(0, *Gandalf);
 	Dumbledore->use(1, *Gandalf);
+	Dumbledore->use(3, *Gandalf);
     printPersonage(Gandalf->getName());
-    Gandalf->use(2, *Dumbledore);
-	Gandalf->use(3, *Dumbledore);
+	Gandalf->use(2, *Dumbledore);
 
-    std::cout << std::endl;
+	Dumbledore->unequip(1);
+	Dumbledore->printInventory();
+	Dumbledore->use(1, *Gandalf);
 
-    Dumbledore->unequip(0);
-    Dumbledore->printInventory();
-    Dumbledore->use(0, *Gandalf);
-    
-    std::cout << std::endl;
-    delete Dumbledore;
-    delete Gandalf;
-    delete ice;
-    delete cure;
+	Dumbledore->equip(new Cure());
+	Dumbledore->printInventory();
+	Dumbledore->use(1, *Gandalf);
+
+	delete Dumbledore;
+	delete Gandalf;
+	delete ice;
 }
 
 static void	testingMateriaSource()

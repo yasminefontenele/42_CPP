@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:16:28 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/02 12:56:49 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:45:01 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,13 @@ int main()
     wrongAnimal->makeSound();
     std::cout << wrongCat->getType() << " makes sound: ";
     wrongCat->makeSound();
+
+    std::cout << std::endl;
+    delete i;
+	delete j;
+	delete meta;
+    delete wrongAnimal;
+    delete wrongCat;
     
     return 0; 
 }
