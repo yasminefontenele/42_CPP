@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:16:28 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/05 18:41:57 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/12/06 10:17:58 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,24 @@
 #include "Cat.hpp"
 #include "Brain.hpp"
 
+void printSection(const std::string &title)
+{
+    std::cout << "\033[1m" << title << "\033[0m\n";
+}
+
 int main()
 {
-    std::cout << "Tests from subject:" << std::endl;
+    printSection("Tests from subject:");
     const Animal* j = new Dog();
     const Animal* i = new Cat();
     delete j;
     delete i;
 
     std::cout << std::endl;
-    std::cout << "My tests:" << std::endl;
+    printSection("My tests:");
     int nbr = 4;
     const Animal *animals[nbr];
-    std::cout << "Creating the animals:" << std::endl;
+    printSection("Creating the animals:");
     for(int y = 0; y < nbr; y++)
     {
         if(y % 2 == 0)
@@ -35,14 +40,14 @@ int main()
         else
             animals[y] = new Cat();
     }
-    std::cout << "Deleting the animals:" << std::endl;
+    printSection("Deleting the animals:");
     for (int y = 0; y < nbr; y++)
         delete animals[y];
 
     std::cout << std::endl;
 
     // tests the deep copy
-    std::cout << "Testing the deep copy:" << std::endl;
+    printSection("Deep copy tests:");
     Dog dog1;
     dog1.getBrain()->setIdeas(1, "Chase the ball!");
     Dog dog2 = dog1;
@@ -51,7 +56,7 @@ int main()
     std::cout << "Dog2 Idea[0]: " << dog2.getBrain()->getIdeas(0) << std::endl;
     
     std::cout << std::endl;
-    std::cout << "Testing the change of idea:" << std::endl;
+    printSection("Changing the idea:");
     std::cout << "Dog1 Idea[0]: " << dog1.getBrain()->getIdeas(1) << std::endl;
     std::cout << "Dog2 Idea[0]: " << dog2.getBrain()->getIdeas(0) << std::endl;
     std::cout << std::endl;

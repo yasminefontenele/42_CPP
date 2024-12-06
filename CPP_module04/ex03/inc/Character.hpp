@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:56:53 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/04 11:02:14 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/12/06 12:33:13 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ class Character : public ICharacter
         void equip(AMateria *m);
         void unequip(int idx);
         void use(int idx, ICharacter &target);
+
+        void printInventory() const;// for testing purposes
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:43:15 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/02 16:35:01 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/12/06 10:35:24 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Cat : public AAnimal
     public:
         Cat();
         Cat(const Cat &other);
-        ~Cat();
+        virtual ~Cat();
         Cat &operator=(const Cat &other);
         
         void makeSound() const;

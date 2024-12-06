@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:16:28 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/02 16:45:05 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/12/06 10:47:12 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,19 @@
 #include "Cat.hpp"
 #include "Brain.hpp"
 
-/*int main()
+void printSection(const std::string &title)
+{
+    std::cout << "\033[1m" << title << "\033[0m\n";
+}
+
+int main()
 {
     int nbrAnimals = 4;
     int i = 0;
 
     AAnimal *animals[nbrAnimals];
 
+    printSection("Tests from subject:");
     while(i < nbrAnimals)
     {
         if(i % 2 == 0)
@@ -38,32 +44,20 @@
         i++;
     }
 
-    std::cout << "-------------------------------------" << std::endl;
-    std::cout << "Check deep copy of Dog class using copy constructor:" << std::endl;
+    std::cout << std::endl;
+    printSection("Check deep copy of Dog with diferent ideas:");
     Dog *dog1 = new Dog;
     dog1->getBrain()->setIdeas(1, "Chase the ball!");
     Dog *dog2 = new Dog(*dog1);
+    dog2->getBrain()->setIdeas(1, "pretend to be dead!");
+    std::cout << std::endl;
     std::cout << "Dog1 Idea[0]: " << dog1->getBrain()->getIdeas(0) << std::endl;
     std::cout << "Dog2 Idea[0]: " << dog2->getBrain()->getIdeas(0) << std::endl;
+    std::cout << "Dog1 Idea[1]: " << dog1->getBrain()->getIdeas(1) << std::endl;
+    std::cout << "Dog2 Idea[1]: " << dog2->getBrain()->getIdeas(1) << std::endl;
+    std::cout << std::endl;
     delete dog1;
-	std::cout << "Dog2 Idea[0]: " << dog2->getBrain()->getIdeas(0) << std::endl;
 	delete dog2;
-}*/
-
-
-int main()
-{
-    const AAnimal *j = new Dog();
-    const AAnimal *i = new Cat();
-
-    std::cout << j->getType() << " makes sound: ";
-    j->makeSound();
-
-    std::cout << i->getType() << " makes sound: ";
-    i->makeSound();
-
-    delete j;
-    delete i;
 
     return 0;
 }

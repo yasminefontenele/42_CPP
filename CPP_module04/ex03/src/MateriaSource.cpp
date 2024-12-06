@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 10:03:14 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/04 11:34:15 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/12/06 12:49:25 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void MateriaSource::learnMateria(AMateria *materia)
     {
         if (!materias[i])
         {
-            materias[i] = materia->clone();
-            //std::cout << "Materia " << materia->getType() << " learned at slot " << i << std::endl;
+            materias[i] = materia;
+            std::cout << "Materia " << materia->getType() << " learned at slot " << i << std::endl;
             return;
         }
     }
@@ -72,7 +72,7 @@ AMateria *MateriaSource::createMateria(std::string const &type)
     {
         if (materias[i] && materias[i]->getType() == type)
         {
-            //std::cout << "Materia " << type << " created from slot " << i << std::endl;
+            std::cout << "Materia " << type << " created from slot " << i << std::endl;
             return materias[i]->clone();
         }
     }

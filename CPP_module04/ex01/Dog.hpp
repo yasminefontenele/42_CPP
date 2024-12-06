@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:32:45 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/02 13:20:42 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/12/06 10:14:50 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Dog : public Animal
     public:
         Dog();
         Dog(const Dog &other);
-        ~Dog();
+        virtual ~Dog();
 
         Dog &operator=(const Dog &other);
 

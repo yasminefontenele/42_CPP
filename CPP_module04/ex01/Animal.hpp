@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:16:25 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/05 18:34:55 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/12/06 10:23:31 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,3 +33,7 @@ class Animal
 };
 
 #endif
+
+/*If the destructor is not virtual, only the base class destructor will be called when deleting
+a derived object, which can lead to memory leaks or undefined behavior if the derived class allocates
+resources (such as dynamic memory).*/

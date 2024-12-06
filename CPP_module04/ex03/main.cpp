@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:16:28 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/04 11:32:30 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:36:46 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,30 +17,156 @@
 #include "inc/ICharacter.hpp"
 #include "inc/IMateriaSource.hpp"
 #include "inc/AMateria.hpp"
+#include <iomanip>
+
+
+/*void printSection(const std::string &title)
+{
+    std::cout << "---------------------------------------------" << std::endl;
+    std::cout << "\033[1m" << title << "\033[0m\n";
+    std::cout << "---------------------------------------------" << std::endl;
+}*/
+
+#include <iostream>
+#include <iomanip>
+
+void printSection(const std::string& title)
+{
+    int totalWidth = 60;
+    int titleWidth = title.length();
+
+    int filling = (totalWidth - titleWidth) / 2;
+    int extraFilling = (totalWidth - titleWidth) % 2;
+
+    std::cout << std::string(totalWidth, '-') << std::endl;
+
+    std::cout << std::string(filling, ' ')
+              << "\033[1m" << title << "\033[0m"
+              << std::string(filling + extraFilling, ' ')
+              << std::endl;
+
+    std::cout << std::string(totalWidth, '-') << std::endl;
+}
+
+static void printPersonage(std::string const &name)
+{
+    std::cout << "[" << name << "]" << std::endl;
+}
+
+static void testSubject(void)
+{
+	printSection("SUBJECT");
+	IMateriaSource* src = new MateriaSource();
+
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+
+	ICharacter*	me = new Character("me");
+	AMateria*	tmp;
+
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	tmp = src->createMateria("unknown");
+    std::cout << std::endl;
+	ICharacter* bob = new Character("bob");
+	me->use(0, *bob);
+	me->use(1, *bob);
+
+    std::cout << std::endl;
+	delete bob;
+	delete me;
+	delete src;
+}
+
+static void	testingICharacter(void)
+{
+    printSection("CHARACTER");
+    ICharacter *Dumbledore = new Character("Marvin");
+    ICharacter *Gandalf = new Character("Yasmine");
+    AMateria *ice = new Ice();
+    AMateria *cure = new Cure();
+
+    std::cout << std::endl;
+    std::cout << "Before equipping..." << std::endl;
+   
+    Dumbledore->printInventory();
+    Gandalf->printInventory();
+
+    Dumbledore->equip(new Ice());
+    Dumbledore->equip(new Cure);
+    Gandalf->equip(new Ice());
+    Gandalf->equip(new Cure);
+    Gandalf->equip(new Cure);
+    Gandalf->equip(new Ice());
+    Gandalf->equip(new Ice());
+
+    std::cout << std::endl;
+    std::cout << "After equipping..." << std::endl;
+    
+    Dumbledore->printInventory();
+    Gandalf->printInventory();
+
+    printPersonage(Dumbledore->getName());
+    Dumbledore->use(0, *Gandalf);
+	Dumbledore->use(1, *Gandalf);
+    printPersonage(Gandalf->getName());
+    Gandalf->use(2, *Dumbledore);
+	Gandalf->use(3, *Dumbledore);
+
+    std::cout << std::endl;
+
+    Dumbledore->unequip(0);
+    Dumbledore->printInventory();
+    Dumbledore->use(0, *Gandalf);
+    
+    std::cout << std::endl;
+    delete Dumbledore;
+    delete Gandalf;
+    delete ice;
+    delete cure;
+}
+
+static void	testingMateriaSource()
+{
+	printSection("MATERIA SOURCE");
+	IMateriaSource	*matSource = new MateriaSource();
+    ICharacter *Dumbledore = new Character("Marvin");
+    ICharacter *Gandalf = new Character("Yasmine");
+	
+	matSource->learnMateria(new Ice());
+	matSource->learnMateria(new Cure());
+	matSource->learnMateria(new Cure());
+	matSource->learnMateria(new Cure());
+	matSource->learnMateria(new Cure());
+
+	Dumbledore->printInventory();
+    
+	Dumbledore->equip(matSource->createMateria("ice"));
+	Dumbledore->equip(matSource->createMateria("cure"));
+	Dumbledore->equip(matSource->createMateria("cure"));
+	Dumbledore->equip(matSource->createMateria("ice"));
+	Dumbledore->printInventory();
+	Dumbledore->equip(matSource->createMateria("cure"));
+	Dumbledore->printInventory();
+
+	Dumbledore->use(0, *Gandalf);
+	Dumbledore->use(2, *Gandalf);
+
+    std::cout << std::endl;
+	delete matSource;
+	delete Dumbledore;
+	delete Gandalf;
+}
 
 int main()
 {
-    IMateriaSource* src = new MateriaSource();
-    src->learnMateria(new Ice());
-    src->learnMateria(new Cure());
-
-    ICharacter* me = new Character("me");
-    AMateria* tmp;
-
-    tmp = src->createMateria("ice");
-    me->equip(tmp);
-
-    tmp = src->createMateria("cure");
-    me->equip(tmp);
-
-    ICharacter* bob = new Character("bob");
-
-    me->use(0, *bob);
-    me->use(1, *bob);
-
-    delete bob;
-    delete me;
-    delete src;
-
+    testSubject();
+    std::cout << std::endl;
+    testingICharacter();
+    std::cout << std::endl;
+    testingMateriaSource();
+    
     return 0;
 }

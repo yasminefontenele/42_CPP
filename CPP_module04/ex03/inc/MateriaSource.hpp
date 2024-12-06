@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 10:04:41 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/04 11:18:21 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/12/06 12:03:07 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class MateriaSource : public IMateriaSource
     public:
         MateriaSource();
         MateriaSource(const MateriaSource &other);
-        ~MateriaSource();
+        virtual ~MateriaSource();
 
         MateriaSource &operator=(const MateriaSource &other);
 
