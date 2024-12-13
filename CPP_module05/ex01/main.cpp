@@ -6,48 +6,38 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 18:44:51 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/11 19:36:23 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/12/13 17:42:54 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-
+#include "Form.hpp"
 int main()
 {
-    try
+    try 
     {
-        Bureaucrat b1("Yasmine", 1);
-        Bureaucrat b2("Marvin", 150);
+        Bureaucrat bob("Bob", 2);
+        Form formA("FormA", 5, 10);
+        Form formB("FormB", 1, 1);
 
-        std::cout << b1 << std::endl;
-        std::cout << b2 << std::endl;
+        std::cout << bob << std::endl;
+        std::cout << formA << std::endl;
 
-        b1.incrementGrade();
+        bob.signForm(formA);
+        std::cout << formA << std::endl;
+
+        bob.signForm(formB); // Should fail
+        std::cout << formB << std::endl;
+
+        bob.incrementGrade(); // Promote Bob to grade 1
+        bob.signForm(formB); // Should now succeed
+        std::cout << formB << std::endl;
+
     }
-    catch(const std::exception& e)
+    catch (std::exception& e)
     {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
 
-    try
-    {
-        Bureaucrat b3("Joao", 151);
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << "Exception caught: " << e.what() << std::endl;
-    }
-    
-    try
-    {
-        Bureaucrat b4("Maria", 50);
-        b4.decrementGrade();
-        std::cout << b4 << std::endl;
-        b4.decrementGrade();
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << "Exception caught: " << e.what() << std::endl;
-    }
     return 0;
 }

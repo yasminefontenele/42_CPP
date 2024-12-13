@@ -6,13 +6,13 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 19:38:39 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/12 15:58:43 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/12/13 17:46:10 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form(const std::string &name, bool isSigned, const int gradeSing, const int gradeExecute) : name(name), isSigned(false), gradeSing(gradeSing), gradeExecute(gradeExecute)
+Form::Form(const std::string &name, const int gradeSing, const int gradeExecute) : name(name), isSigned(false), gradeSing(gradeSing), gradeExecute(gradeExecute)
 {
     if(gradeSing < 1 || gradeExecute < 1) throw GradeTooHighException();
     if(gradeSing > 150 || gradeExecute > 150) throw GradeTooLowException();
@@ -49,27 +49,27 @@ bool Form::getIsSigned() const
     return isSigned;
 }
 
-void Form::beSigned(Bureaucrat &b)
+void Form::beSigned(const Bureaucrat &b)
 {
     if(b.getGrade() > gradeSing)
         throw GradeTooLowException();
-    isSigned = true;
+    this->isSigned = true;
 }
 
-const char *Bureaucrat::GradeTooHighException::what() const throw()
+const char *Form::GradeTooHighException::what() const throw()
 {
-    return "Grade is too high!";
+    return "Form grade is too high!";
 }
 
-const char *Bureaucrat::GradeTooLowException::what() const throw()
+const char *Form::GradeTooLowException::what() const throw()
 {
-    return "Grade is too low!";
+    return "Form grade is too low!";
 }
 
 std::ostream &operator<<(std::ostream &outputStream, const Form &obj)
 {
     outputStream << "Form " << obj.getName() << ", requires grade "
-    << obj.getGradeSing() << " to sign, grade" << obj.getGradeExecute()
-    << " to execute, signed: " << (obj.getGradeSing() ? "yes" : "no");
+    << obj.getGradeSing() << " to sign, grade " << obj.getGradeExecute()
+    << " to execute, signed: " << (obj.getIsSigned() ? "yes" : "no");
     return outputStream;
 }

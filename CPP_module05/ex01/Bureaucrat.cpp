@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 18:45:01 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/12 15:59:03 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/12/13 17:32:04 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void Bureaucrat::signForm(Form &form) const
     }
     catch(const std::exception& e)
     {
-        std::cout << name << " couldn't sign " << form.getName() << "because" << e.what() << std::endl;
+        std::cout << name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
     }
     
 }
