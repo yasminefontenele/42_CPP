@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 18:49:41 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/17 19:46:55 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/12/18 18:14:12 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <limits>
 #include <cmath>
 #include <cstdlib>
+#include <iomanip>
 
 class ScalarConverter
 {

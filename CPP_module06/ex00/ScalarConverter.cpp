@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 18:49:33 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/17 19:54:15 by yfontene         ###   ########.fr       */
+/*   Updated: 2024/12/18 18:23:23 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ bool ScalarConverter::isFloat(const std::string &literal)
     if (literal == "+inff" || literal == "-inff" || literal == "nanf")
         return true;
     char *end;
-    float val = std::strtof(literal.c_str(), &end);
-    return *end == '\0' && val >= std::numeric_limits<int>::min() && val <= std::numeric_limits<int>::max();
+    std::strtof(literal.c_str(), &end);
+    return *end == 'f' && *(end + 1) == '\0';
 }
 
 bool ScalarConverter::isDouble(const std::string &literal)
@@ -65,9 +65,7 @@ bool ScalarConverter::isDouble(const std::string &literal)
     if (literal == "+inf" || literal == "-inf" || literal == "nan")
         return true;
     char *end;
-    double val = std::strtod(literal.c_str(), &end);
-    if (val < -std::numeric_limits<double>::max() || val > std::numeric_limits<double>::max())
-        return false;
+    std::strtod(literal.c_str(), &end);
     return *end == '\0';
 }
 
@@ -86,12 +84,18 @@ void ScalarConverter::printInt(int i)
 
 void ScalarConverter::printFloat(float f)
 {
-    std::cout << "float: " << f << "f" << std::endl;
+    if (std::isinf(f) || std::isnan(f))
+        std::cout << "float: " << f << "f" << std::endl;
+    else
+        std::cout << std::fixed << std::setprecision(1) << "float: " << f << "f" << std::endl;
 }
 
 void ScalarConverter::printDouble(double d)
 {
-    std::cout << "double: " << d << std::endl;
+    if (std::isinf(d) || std::isnan(d))
+        std::cout << "double: " << d << std::endl;
+    else
+        std::cout << std::fixed << std::setprecision(1) << "double: " << d << std::endl;
 }
 
 void ScalarConverter::convert(const std::string &literal)
@@ -115,16 +119,32 @@ void ScalarConverter::convert(const std::string &literal)
     else if (isFloat(literal))
     {
         float f = std::strtof(literal.c_str(), NULL);
-        printChar(static_cast<char>(f));
-        printInt(static_cast<int>(f));
+        if (std::isnan(f) || std::isinf(f))
+        {
+            std::cout << "char: impossible" << std::endl;
+            std::cout << "int: impossible" << std::endl;
+        }
+        else
+        {
+            printChar(static_cast<char>(f));
+            printInt(static_cast<int>(f));
+        }
         printFloat(f);
         printDouble(static_cast<double>(f));
     }
     else if (isDouble(literal))
     {
         double d = std::strtod(literal.c_str(), NULL);
-        printChar(static_cast<char>(d));
-        printInt(static_cast<int>(d));
+        if (std::isnan(d) || std::isinf(d))
+        {
+            std::cout << "char: impossible" << std::endl;
+            std::cout << "int: impossible" << std::endl;
+        }
+        else
+        {
+            printChar(static_cast<char>(d));
+            printInt(static_cast<int>(d));
+        }
         printFloat(static_cast<float>(d));
         printDouble(d);
     }
