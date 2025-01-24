@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 13:46:09 by yfontene          #+#    #+#             */
-/*   Updated: 2025/01/06 14:27:58 by yfontene         ###   ########.fr       */
+/*   Updated: 2025/01/24 16:59:19 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,3 +37,16 @@ class Serializer
 };
 
 #endif
+
+/*
+reinterpret_cast<> takes a data type and "reinterprets" it as another type,
+without performing any value conversion. It just changes the way the compiler
+sees the bits in memory.
+ex:
+int main() {
+    int x = 42;
+    char *c = reinterpret_cast<char*>(&x);
+
+    std::cout << *c << std::endl; // Imprime o primeiro byte da representação de x
+}
+*/

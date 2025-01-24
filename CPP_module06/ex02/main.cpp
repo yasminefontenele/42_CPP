@@ -5,6 +5,7 @@
 #include "C.hpp"
 #include <iostream>
 #include <cstdlib>//for rand()
+#include <ctime>
 
 Base *generate(void)
 {
@@ -17,6 +18,8 @@ Base *generate(void)
         ret = new B;
     else
         ret = new C;
+
+    return ret;
 }
 
 void identify(Base* p)
@@ -59,6 +62,8 @@ void identify(Base& p)
 
 int main()
 {
+    std::srand(std::time(0));
+
     for (int i = 0; i < 10; ++i)
     {
         Base* obj = generate();

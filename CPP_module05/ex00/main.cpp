@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 18:44:51 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/11 19:36:23 by yfontene         ###   ########.fr       */
+/*   Updated: 2025/01/24 11:31:51 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int main()
         Bureaucrat b4("Maria", 50);
         b4.decrementGrade();
         std::cout << b4 << std::endl;
-        b4.decrementGrade();
+        b4.incrementGrade();
+        std::cout << b4 << std::endl;
     }
     catch(const std::exception& e)
     {
