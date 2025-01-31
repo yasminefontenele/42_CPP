@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 18:44:51 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/13 20:04:54 by yfontene         ###   ########.fr       */
+/*   Updated: 2025/01/31 12:20:32 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int main()
         // Teste 3: PresidentialPardonForm
         std::cout << "\n=== Test: PresidentialPardonForm ===" << std::endl;
         Bureaucrat president("President", 1);
-        PresidentialPardonForm pardon("Target2");
+        PresidentialPardonForm pardon("Roosevelt");
         std::cout << pardon << std::endl;
 
         president.signForm(pardon);

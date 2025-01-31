@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 18:44:51 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/17 16:41:56 by yfontene         ###   ########.fr       */
+/*   Updated: 2025/01/31 12:24:18 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int main()
     try
     {
         Intern intern;
-        Bureaucrat boss("Boss", 1);
+        Bureaucrat boss("Boss", 100);
 
-        AForm *form1 = intern.makeForm("shrubbery creation", "Home");
+        AForm *form1 = intern.makeForm("shrubbery creation", "Tree");
         AForm *form2 = intern.makeForm("robotomy request", "Marvin");
-        AForm *form3 = intern.makeForm("presidential pardon", "Trump");
+        AForm *form3 = intern.makeForm("presidential pardon", "Roosevelt");
         
         if (form1)
         {

@@ -6,7 +6,7 @@
 /*   By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 19:38:39 by yfontene          #+#    #+#             */
-/*   Updated: 2024/12/13 18:57:51 by yfontene         ###   ########.fr       */
+/*   Updated: 2025/01/31 12:17:29 by yfontene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ bool AForm::getIsSigned() const
 void AForm::beSigned(const Bureaucrat &b)
 {
     if(b.getGrade() > gradeSing)
-        throw GradeTooLowException();
+        throw GradeTooHighException();
     this->isSigned = true;
 }
 
@@ -79,7 +79,7 @@ void AForm::checkExecution(const Bureaucrat &executor) const
     if (!isSigned)
         throw FormNotSignedException();
     if (executor.getGrade() > gradeExecute)
-        throw GradeTooLowException();
+        throw GradeTooHighException();
 }
 
 const char *AForm::FormNotSignedException::what() const throw()
