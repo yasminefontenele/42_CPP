@@ -12,13 +12,13 @@ private:
 
 public:
     // Construtor padrão
-    Array() : _data(nullptr), _size(0) {}
+    Array() : _data(NULL), _size(0) {}
 
     // Construtor com tamanho
     Array(unsigned int n) : _data(new T[n]()), _size(n) {}
 
     // Construtor de cópia
-    Array(const Array& other) : _data(nullptr), _size(0) {
+    Array(const Array& other) : _data(NULL), _size(0) {
         *this = other;
     }
 
@@ -55,7 +55,6 @@ public:
         return _data[index];
     }
 
-    // Método size()
     unsigned int size() const {
         return _size;
     }
