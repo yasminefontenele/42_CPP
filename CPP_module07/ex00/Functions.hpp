@@ -3,12 +3,11 @@
 # define FUNCTIONS_HPP
 
 template <typename T>
-T swap(T &a, T &b)
+void swap(T &a, T &b)
 {
     T tmp = a;
     a = b;
     b = tmp;
-    return a;
 }
 
 template <typename T>

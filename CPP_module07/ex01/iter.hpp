@@ -3,9 +3,15 @@
 
 #include <iostream>
 
-
 template <typename T>
 void	iter(T arr[], int len, void (*f)(T& x))
+{
+	for (int i = 0; i < len; i++)
+		f(arr[i]);
+}
+
+template <typename T>
+void	iter(const T arr[], int len, void (*f)(const T& x))
 {
 	for (int i = 0; i < len; i++)
 		f(arr[i]);
