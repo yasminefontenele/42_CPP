@@ -1,8 +1,10 @@
 #include "easyfind.hpp"
 #include <vector>
 #include <list>
+#include <iostream>
+#include <deque>
 
-int main()
+/*int main()
 {
     try
     {
@@ -33,6 +35,41 @@ int main()
     catch (const std::exception& e)
     {
         std::cerr << "Erro: " << e.what() << std::endl;
+    }
+
+    return 0;
+}*/
+
+int main()
+{
+    int arr[] = {1, 4, 3, 4, 5, 6, 7, 8};
+    std::vector<int> vec(arr, arr + sizeof(arr) / sizeof(arr[0]));
+
+    std::cout << "Testing with vector..." << std::endl;// the 
+    try
+    {
+        easyfind(vec, 4);
+        easyfind(vec, 6);
+        easyfind(vec, 8);
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+
+    const int arrList[] = {50, 60, 70, 80, 120};
+    const std::vector<int> vecConst(arrList, arrList + sizeof(arrList) / sizeof(arrList[0]));
+
+    std::cout << "Testing with const vector..." << std::endl;
+    try
+    {
+        easyfind(vecConst, 50);
+        easyfind(vecConst, 80);
+        easyfind(vecConst, 90);//Should throw exception
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << e.what() << std::endl;
     }
 
     return 0;

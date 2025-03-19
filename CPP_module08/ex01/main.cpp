@@ -15,44 +15,58 @@ int main()
 }
 
 //my main
-/*
-int main() {
-    try {
-        Span sp(5);//cria span com no max 5 elementos
-        sp.addNumber(6);
-        sp.addNumber(3);
-        sp.addNumber(17);
-        sp.addNumber(9);
-        sp.addNumber(11);
+/*#include <cstdlib> // Para std::rand e std::srand
+#include <ctime>   // Para std::time
 
-        std::cout << "Menor intervalo: " << sp.shortestSpan() << std::endl;
-        std::cout << "Maior intervalo: " << sp.longestSpan() << std::endl;
+int main()
+{
+    std::srand(std::time(0)); //Initialize the random number generator
 
-        //Tentando adicionar um número extra para testar exceção
-        sp.addNumber(42);
-    }
-    catch (const std::exception& e)
+    // Creates a Span with capacity for 10,000 numbers
+    Span span(10000);
+
+    // Add 10,000 random numbers to the Span
+    for (int i = 0; i < 9997; i++)
     {
-        std::cerr << "Erro: " << e.what() << std::endl;
+        span.addNumber(std::rand() % 10000);
     }
 
-    //Teste com múltiplos números de uma vez
-    try {
-        Span sp2(10000);
-        std::vector<int> bigSet;
-        for (int i = 0; i < 10000; i++)
-            bigSet.push_back(i * 2); //Números pares
-
-        sp2.addRange(bigSet.begin(), bigSet.end());
-
-        std::cout << "Menor intervalo (grande conjunto): " << sp2.shortestSpan() << std::endl; // Deve ser 2
-        std::cout << "Maior intervalo (grande conjunto): " << sp2.longestSpan() << std::endl;  // Deve ser 19998
-    }
-    catch (const std::exception& e)
+    // Tests the smallest and largest range
+    try
     {
-        std::cerr << "Erro: " << e.what() << std::endl;
+        std::cout << "Shortest span: " << span.shortestSpan() << std::endl;
+        std::cout << "Longest span: " << span.longestSpan() << std::endl;
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+
+    std::vector<int> extraNumbers;
+    extraNumbers.push_back(42);
+    extraNumbers.push_back(24);
+    extraNumbers.push_back(12);
+    extraNumbers.push_back(6);
+
+   try
+   {
+        for (std::vector<int>::iterator it = extraNumbers.begin(); it != extraNumbers.end(); ++it)
+        {
+            try
+            {
+                span.addNumber(*it);// Try to add the number to the Span
+                std::cout << "Number added: " << *it << std::endl;
+            }
+            catch (const Span::SpanFullException &e)
+            {
+                std::cerr << "Failed to add number " << *it << ": " << e.what() << std::endl;
+            }
+        }
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << "Error: " << e.what() << std::endl;
     }
 
     return 0;
-}
-*/
+}*/

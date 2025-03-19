@@ -9,24 +9,24 @@
 class Span
 {
     private:
-        unsigned int _maxSize;     // Quantidade máxima de números
-        std::vector<int> _numbers; // Container para armazenar os números
+        unsigned int _maxSize;//Maximum Span Capacity
+        std::vector<int> _numbers;//Container to store numbers
 
     public:
         Span(unsigned int maxSize);
         ~Span();
 
-        void addNumber(int num);
-        int shortestSpan() const;
-        int longestSpan() const;
+        void addNumber(int num); // Add a single number
+        int shortestSpan() const;// Calculates the smallest range
+        int longestSpan() const; // Calculates the largest range
 
-        // Método extra: Adicionar um range de números
+        //Extra method: Add a range of numbers
         void addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 
         class SpanFullException : public std::exception
         {
             public:
-                virtual const char* what() const throw();//virtual para poder ser sobrescrito
+                virtual const char* what() const throw();//virtual so it can be overwritten
         };
 
         class NotEnoughNumbersException : public std::exception
