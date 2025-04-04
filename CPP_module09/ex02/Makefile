@@ -6,7 +6,7 @@
 #    By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 13:15:17 by yfontene          #+#    #+#              #
-#    Updated: 2025/02/19 13:24:22 by yfontene         ###   ########.fr        #
+#    Updated: 2025/04/04 12:36:38 by yfontene         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,12 +18,12 @@ CYAN				=	\033[0;36m
 END					=	\033[0m
 
 
-NAME = MutantStack
+NAME = PmergeMe
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -f
 
-SRCS=					main.cpp
+SRCS=					PmergeMe.cpp main.cpp
 						
 OBJS=					$(SRCS:.cpp=.o)
 
