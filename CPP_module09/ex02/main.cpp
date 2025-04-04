@@ -1,7 +1,12 @@
 
+/*
+For test purposes: ./PmergeMe $(shuf -i 1-10000 -n 3000 | tr "\n" " ")
+*/
+
 #include "PmergeMe.hpp"
 #include <climits>
 #include <cctype>
+#include <set>
 
 bool isAllDigits(const char *str)
 {
@@ -11,6 +16,17 @@ bool isAllDigits(const char *str)
             return false;
     }
     return true;
+}
+
+bool hasDuplicates(const std::vector<int>& nums)
+{
+    std::set<int> unique_numbers;
+    for (size_t i = 0; i < nums.size(); i++)
+    {
+        if (!unique_numbers.insert(nums[i]).second)
+            return true;
+    }
+    return false;
 }
 
 int main(int argc, char **argv)
@@ -31,7 +47,7 @@ int main(int argc, char **argv)
             std::cerr << "Error: Invalid input \"" << argv[i] << "\"" << std::endl;
             return 1;
         }
-        
+
         if (argv[i][0] == '-')
         {
             std::cerr << "Error: negative numbers are not allowed" << std::endl;
@@ -49,6 +65,12 @@ int main(int argc, char **argv)
         
         vec.push_back(static_cast<int>(num));
         deq.push_back(static_cast<int>(num));
+    }
+
+    if (hasDuplicates(vec))
+    {
+        std::cerr << "Error: duplicate numbers are not accepted.\n";
+        return 1;
     }
     
     PmergeMe sorter;

@@ -2,13 +2,145 @@
 
 PmergeMe::PmergeMe() {}
 
-PmergeMe::PmergeMe(const PmergeMe &other) { *this = other; }
+PmergeMe::PmergeMe(const PmergeMe &other)
+{ 
+    *this = other;
+}
 
-PmergeMe &PmergeMe::operator=(const PmergeMe &other) { (void)other; return *this; }
+PmergeMe &PmergeMe::operator=(const PmergeMe &other)
+{
+    (void)other; return *this;
+}
 
 PmergeMe::~PmergeMe() {}
 
-// To demonstrate the time measurement and sorting
+std::vector<size_t> PmergeMe::generateJacobsthalSequence(size_t n)
+{
+    std::vector<size_t> sequence;
+    if (n == 0)
+        return sequence;
+    
+    sequence.push_back(0);
+    if (n == 1)
+        return sequence;
+    
+    sequence.push_back(1);
+    
+    while (true)
+    {
+        size_t next = sequence.back() + 2 * sequence[sequence.size() - 2];
+        if (next > n)
+            break;
+        sequence.push_back(next);
+    }
+    return sequence;
+}
+
+template <typename T>
+void PmergeMe::fordJohnsonSort(T &container)
+{
+    if (container.size() <= 1)
+        return;
+    mergeInsertionSort(container, 0, container.size());
+}
+
+template <typename T>
+void PmergeMe::mergeInsertionSort(T &container, size_t start, size_t end)
+{
+    size_t size = end - start;
+    if (size <= 1) return;
+
+    //Create pairs and sort them
+    size_t pair_count = size / 2;
+    std::vector<std::pair<int, int> > pairs;
+    
+    for (size_t i = start; i < start + pair_count * 2; i += 2)
+    {
+        if (container[i] < container[i + 1])
+            pairs.push_back(std::make_pair(container[i + 1], container[i]));
+        else
+            pairs.push_back(std::make_pair(container[i], container[i + 1]));
+    }
+
+    std::sort(pairs.begin(), pairs.end());
+
+    //Create main chain and pend elements
+    T main_chain;
+    T pend;
+    
+    for (typename std::vector<std::pair<int, int> >::const_iterator it = pairs.begin(); 
+         it != pairs.end(); ++it)
+    {
+        main_chain.push_back(it->first);
+        pend.push_back(it->second);
+    }
+
+    //Handle straggler if odd number of elements
+    bool has_straggler = (size % 2 != 0);
+    int straggler = has_straggler ? container.back() : 0;
+
+    //Recursively sort the main chain
+    if (main_chain.size() > 1)
+        fordJohnsonSort(main_chain);
+
+    //Insert pend elements using Jacobsthal sequence
+    insertUsingJacobsthal(main_chain, pend);
+
+    // Insert straggler if exists
+    if (has_straggler)
+    {
+        typename T::iterator pos = std::lower_bound(main_chain.begin(), main_chain.end(), straggler);
+        main_chain.insert(pos, straggler);
+    }
+
+    // Copy the sorted elements back to the original container
+    std::copy(main_chain.begin(), main_chain.end(), container.begin() + start);
+}
+
+template <typename T>
+void PmergeMe::insertUsingJacobsthal(T &main_chain, const T &pend)
+{
+    if (pend.empty())
+        return;
+
+    std::vector<size_t> jacob_seq = generateJacobsthalSequence(pend.size());
+    std::vector<bool> inserted(pend.size(), false);
+
+    // Jk−1
+    for (size_t k = 1; k < jacob_seq.size(); ++k)
+    {
+        size_t current_jacob = jacob_seq[k];
+        size_t prev_jacob = jacob_seq[k - 1];
+
+        for (size_t i = prev_jacob - 1; i < current_jacob - 1; ++i)
+        {
+            if (i < pend.size() && !inserted[i])
+            {
+                typename T::iterator pos = std::lower_bound(main_chain.begin(), main_chain.end(), pend[i]);
+                main_chain.insert(pos, pend[i]);
+                inserted[i] = true;
+            }
+        }
+    }
+
+    // Insert any remaining elements
+    for (size_t i = 0; i < pend.size(); ++i)
+    {
+        if (!inserted[i]) {
+            typename T::iterator pos = std::lower_bound(main_chain.begin(), main_chain.end(), pend[i]);
+            main_chain.insert(pos, pend[i]);
+        }
+    }
+}
+
+// Explicit template instantiation
+template void PmergeMe::fordJohnsonSort<std::vector<int> >(std::vector<int> &);
+template void PmergeMe::fordJohnsonSort<std::deque<int> >(std::deque<int> &);
+template void PmergeMe::mergeInsertionSort<std::vector<int> >(std::vector<int> &, size_t, size_t);
+template void PmergeMe::mergeInsertionSort<std::deque<int> >(std::deque<int> &, size_t, size_t);
+template void PmergeMe::insertUsingJacobsthal<std::vector<int> >(std::vector<int> &, const std::vector<int> &);
+template void PmergeMe::insertUsingJacobsthal<std::deque<int> >(std::deque<int> &, const std::deque<int> &);
+
 void PmergeMe::sortAndMeasure(std::vector<int> &vec, std::deque<int> &deq)
 {
     std::cout << "Before: ";
@@ -20,7 +152,7 @@ void PmergeMe::sortAndMeasure(std::vector<int> &vec, std::deque<int> &deq)
     clock_t start = clock();
     fordJohnsonSort(vec);
     clock_t end = clock();
-    double timeVec = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000; // Convert to microseconds
+    double timeVec = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
     
     // Measure time for deque
     start = clock();
@@ -39,69 +171,4 @@ void PmergeMe::sortAndMeasure(std::vector<int> &vec, std::deque<int> &deq)
     std::cout << "Time to process a range of " << deq.size() 
               << " elements with std::deque: " 
               << std::fixed << std::setprecision(5) << timeDeq << " us" << std::endl;
-}
-
-void PmergeMe::fordJohnsonSort(std::vector<int> &arr)
-{
-    mergeInsertionSort(arr);
-}
-
-void PmergeMe::fordJohnsonSort(std::deque<int> &arr)
-{
-    mergeInsertionSort(arr);
-}
-
-
-/*
-@brief The mergeInsertionSort function is a helper function that implements the merge-insertion sort algorithm
-@details It takes a container (vector or deque) as input and sorts it using the merge-insertion sort algorithm
-         The function first creates pairs of elements from the input container, then sorts the main sequence
-         and inserts the sub-sequence into the main sequence
-         The function uses std::lower_bound to find the correct position for each element in the sub-sequence
-         Finally, it assigns the sorted main sequence back to the input container
-         The function is templated to work with both std::vector and std::deque
-*/
-template <typename T>
-void PmergeMe::mergeInsertionSort(T &arr)
-{
-    if (arr.size() <= 1)
-        return;
-    
-    // Create pairs of elements
-    // The first element of each pair is the maximum, and the second is the minimum
-    // This is done to ensure that the first element of each pair is always greater than or equal to the second
-    std::vector<std::pair<int, int> > pairs;
-    T mainSeq, subSeq;
-    
-    for (size_t i = 0; i + 1 < arr.size(); i += 2)
-        pairs.push_back(std::make_pair(std::max(arr[i], arr[i + 1]), std::min(arr[i], arr[i + 1])));
-    
-    // We take only the largest numbers of the pairs and put them in mainSeq
-    for (size_t i = 0; i < pairs.size(); i++)
-        mainSeq.push_back(pairs[i].first);
-    
-    // If the size of the array is odd, add the last element to the main sequence
-    if (arr.size() % 2 != 0)
-        mainSeq.push_back(arr.back());
-    
-    mergeInsertionSort(mainSeq);
-    
-    for (size_t i = 0; i < pairs.size(); i++)
-        subSeq.push_back(pairs[i].second);
-    
-    //Here, for each number in subSeq we use lower_bound to find the correct position where the number
-    //should be inserted inside mainSeq. Then, we use insert to put the number in the right position.
-    //This simulates the Insertion Sort part, where we insert the smallest elements already inside the sorted list.
-    for (size_t i = 0; i < subSeq.size(); i++)
-    {
-        typename T::iterator pos = std::lower_bound(mainSeq.begin(), mainSeq.end(), subSeq[i]);
-
-        // Obter o índice correto a partir do iterador
-        size_t index = std::distance(mainSeq.begin(), pos);
-
-        // Inserir no índice correto dentro do deque
-        mainSeq.insert(mainSeq.begin() + index, subSeq[i]);
-    }
-    
-    arr.assign(mainSeq.begin(), mainSeq.end());
 }

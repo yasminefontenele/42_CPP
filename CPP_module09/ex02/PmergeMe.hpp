@@ -2,15 +2,13 @@
 #ifndef PMERGEME_HPP
 #define PMERGEME_HPP
 
-#include <iostream>
 #include <vector>
 #include <deque>
-#include <ctime>
-#include <cstdlib>
-#include <sstream>
-#include <stdexcept>
 #include <algorithm>
-#include <iomanip> // Para std::fixed e std::setprecision
+#include <iostream>
+#include <ctime>
+#include <iomanip>
+#include <utility>
 
 class PmergeMe
 {
@@ -19,15 +17,26 @@ class PmergeMe
         PmergeMe(const PmergeMe &other);
         PmergeMe &operator=(const PmergeMe &other);
         ~PmergeMe();
-        
+
         void sortAndMeasure(std::vector<int> &vec, std::deque<int> &deq);
         
     private:
-        void fordJohnsonSort(std::vector<int> &arr);
-        void fordJohnsonSort(std::deque<int> &arr);
+        // Jacobsthal number generation
+        static std::vector<size_t> generateJacobsthalSequence(size_t n);
+        
         template <typename T>
-        void mergeInsertionSort(T &arr);// to encapsulate the Ford-Johnson Sort logic and facilitate implementation in different containers
+        void fordJohnsonSort(T &container);
+        
+        // Main sorting algorithm
+        template <typename T>
+        void mergeInsertionSort(T &container, size_t start, size_t end);
+        
+        // Helper function to insert elements using Jacobsthal sequence
+        template <typename T>
+        void insertUsingJacobsthal(T &main_chain, const T &pend);
 };
 
+
 #endif
+
 

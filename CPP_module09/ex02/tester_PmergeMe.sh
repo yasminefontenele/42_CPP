@@ -48,16 +48,21 @@ make re || fail "Failed to compile the program"
 # Basic functionality tests
 echo "=== BASIC TESTS ==="
 test_input "Simple sorting" "3 1 4 2 5" "1 2 3 4 5" false
-test_input "Repeated numbers" "5 5 2 2 1" "1 2 2 5 5" false
 test_input "Single number" "42" "42" false
 test_input "Descending order numbers" "5 4 3 2 1" "1 2 3 4 5" false
 
 # Error handling tests
 echo "=== ERROR TESTS ==="
+test_input "Repeated characters" "1 1 1" "" true
 test_input "Negative number" "-1 2 3" "" true
 test_input "Zero" "0 1 2" "" true
 test_input "Non-numeric character" "1 a 3" "" true
 test_input "Very large number" "999999999999999999 1" "" true
+
+# Intermediate tests with larger sets of numbers
+echo "=== INTERMEDIATE TESTS ==="
+test_input "100 numbers" "$(seq 1 100 | shuf | tr '\n' ' ')" "$(seq 1 100 | tr '\n' ' ' | xargs)" false
+test_input "500 numbers" "$(seq 1 500 | shuf | tr '\n' ' ')" "$(seq 1 500 | tr '\n' ' ' | xargs)" false
 
 # Performance tests with large number sets
 echo "=== PERFORMANCE TESTS ==="
