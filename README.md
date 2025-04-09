@@ -5,8 +5,13 @@ After my C programming experience, I have come to appreciate the power and flexi
 
 ### learning from each module:
 
-**CPP00** - namespaces, classes, member functions, stdio streams, initialization lists, static, consts and some other basic stufs;<br>
-**CPP01** - memory allocation, pointers to members, references and switch statement;<br>
-**CPP02** - ad-hoc polymorphism, operator overloading and Orthodox Canonical class form;<br>
-**CPP03** - inheritance;<br>
-**CPP04** - subtype polymorphism, abstract classes, interfaces;<br>
+**CPP00** - Namespaces, classes, member functions, stdio streams, initialization lists, static, consts and some other basic stufs;<br>
+**CPP01** - Memory allocation, pointers to members, references and switch statement;<br>
+**CPP02** - Ad-hoc polymorphism, operator overloading and Orthodox Canonical class form;<br>
+**CPP03** - Inheritance;<br>
+**CPP04** - Subtype polymorphism, abstract classes, interfaces;<br>
+**CPP05** - Repetition and exceptions;<br>
+**CPP06** - Casts;<br>
+**CPP07** - Templates;<br>
+**CPP08** - Templated containers, iterators, algorithms;<br>
+**CPP09** - STL;<br>
