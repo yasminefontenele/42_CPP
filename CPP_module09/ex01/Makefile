@@ -6,7 +6,7 @@
 #    By: yfontene <yfontene@student.42porto>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 13:15:17 by yfontene          #+#    #+#              #
-#    Updated: 2025/02/19 12:53:30 by yfontene         ###   ########.fr        #
+#    Updated: 2025/04/09 15:25:39 by yfontene         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,12 +18,12 @@ CYAN				=	\033[0;36m
 END					=	\033[0m
 
 
-NAME = Span
+NAME = RPN
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -f
 
-SRCS=					main.cpp Span.cpp
+SRCS=					main.cpp RPN.cpp
 						
 OBJS=					$(SRCS:.cpp=.o)
 
