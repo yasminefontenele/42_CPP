@@ -71,7 +71,7 @@ double RPN::tokenization(const std::string& expression)
             if (isNumber)
                 throw InvalidExpressionException("Multi-digit number not allowed");
             else
-                throw InvalidExpressionException("Invalid token");
+                throw InvalidExpressionException("Error");
         }
     }
 

@@ -4,15 +4,19 @@ BitcoinExchange::BitcoinExchange() {}
 
 BitcoinExchange::~BitcoinExchange() {}
 
+// Load prices from a file into a map
 void BitcoinExchange::loadPrices(std::string filename)
 {
     std::ifstream file(filename.c_str());
-    if (!file) {
+
+    if (!file)
+    {
         std::cerr << "Error: could not open database file." << std::endl;
         return;
     }
 
     std::string line;
+    std::getline(file, line); // skip the header line
     while (std::getline(file, line))
     {
         std::stringstream ss(line);
@@ -25,15 +29,19 @@ void BitcoinExchange::loadPrices(std::string filename)
     file.close();
 }
 
-void BitcoinExchange::processInput(std::string input)
+// Process input from a file and calculate the exchange rate
+void BitcoinExchange::processInput(std::string filename)
 {
     std::ifstream file(filename.c_str());
-    if (!file) {
+
+    if (!file)
+    {
         std::cerr << "Error: could not open input file." << std::endl;
         return;
     }
 
     std::string line;
+    std::getline(file, line);
     while (std::getline(file, line))
     {
         std::stringstream ss(line);
@@ -63,40 +71,41 @@ void BitcoinExchange::processInput(std::string input)
     file.close();
 }
 
-/*
-lower_bound é um método de std::map que retorna um iterador para o primeiro elemento cuja chave
-não é menor que a chave fornecida.
-*/
+
 float BitcoinExchange::getClosestPrice(const std::string& date)
 {
     std::map<std::string, float>::iterator it = _prices.lower_bound(date);
+
     if (it == _prices.begin() && it->first != date)
-    {
-        std::cerr << "Error: no available exchange rate for date " << date << std::endl;
-        return 0.0;
-    }
+        return it->second;
+
     if (it == _prices.end() || it->first != date)
         --it;
+
     return it->second;
 }
 
 bool BitcoinExchange::isValidDate(const std::string& date)
 {
-    if (date.size() != 10 || date[4] != '-' || date[7] != '-')// Verifica se a data tem o formato yyyy-mm-dd
+    // check if the date is in the format YYYY-MM-DD
+    if (date.size() != 10 || date[4] != '-' || date[7] != '-')
         return false;
 
-    // Extraindo ano, mês e dia
-    int year = atoi(date.substr(0, 4).c_str());
-    int month = atoi(date.substr(5, 2).c_str());
-    int day = atoi(date.substr(8, 2).c_str());
+    int year, month, day;
+    char sep1, sep2;
+    std::istringstream iss(date);
+    iss >> year >> sep1 >> month >> sep2 >> day;
 
-    if (month < 1 || month > 12)
+    if (sep1 != '-' || sep2 != '-' || iss.fail() || !iss.eof())
         return false;
 
-    // Verifica os dias válidos para cada mês
+    if (year < 0 || month < 1 || month > 12 || day < 1)
+        return false;
+
+    // check the number of days in the month
     int daysInMonth[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
-    // Ajusta fevereiro para anos bissextos
+    // Adjust February for leap years
     if (month == 2 && ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)))
         daysInMonth[1] = 29;
 
