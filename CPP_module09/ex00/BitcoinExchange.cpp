@@ -59,6 +59,7 @@ void BitcoinExchange::processInput(std::string filename)
             std::cerr << "Error: not a positive number." << std::endl;
             continue;
         }
+        
         if (value > 1000)
         {
             std::cerr << "Error: too large a number." << std::endl;
@@ -74,14 +75,21 @@ void BitcoinExchange::processInput(std::string filename)
 
 float BitcoinExchange::getClosestPrice(const std::string& date)
 {
+    if (_prices.empty())
+        std::cerr << "Error: database is empty" << std::endl;
+
     std::map<std::string, float>::iterator it = _prices.lower_bound(date);
 
-    if (it == _prices.begin() && it->first != date)
+    // If we find the exact date
+    if (it != _prices.end() && it->first == date)
         return it->second;
 
-    if (it == _prices.end() || it->first != date)
-        --it;
+    // If all dates in the DB are after the date searched
+    if (it == _prices.begin()) 
+        std::cerr << ("Error: no earlier date available in database") << std::endl;
 
+    // General case, we decrement to get the previous date
+    --it;
     return it->second;
 }
 
